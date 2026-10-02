@@ -1,0 +1,599 @@
+{
+  "ProcurementCase": {
+    "name": "ProcurementCase",
+    "fields": [
+      {
+        "name": "name",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "caseNumber",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "coordinator",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "allocationAuthority",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "authorizationReference",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "openedAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      }
+    ]
+  },
+  "RecoveryTeam": {
+    "name": "RecoveryTeam",
+    "fields": [
+      {
+        "name": "name",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "organization",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "lead",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "contact",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "availabilityAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "AuthorizedShipment": {
+    "name": "AuthorizedShipment",
+    "fields": [
+      {
+        "name": "name",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "shipmentNumber",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "authorizationReference",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "recoveryAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "destination",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "deadlineAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "Container": {
+    "name": "Container",
+    "fields": [
+      {
+        "name": "name",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "containerNumber",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "deviceNumber",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "sealedAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "sealReference",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "ShipmentContainer": {
+    "name": "ShipmentContainer",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "authorizedShipmentId",
+        "kind": "string",
+        "required": true,
+        "relation": "AuthorizedShipment"
+      },
+      {
+        "name": "containerId",
+        "kind": "string",
+        "required": true,
+        "relation": "Container"
+      },
+      {
+        "name": "packedAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "packer",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "TransportLeg": {
+    "name": "TransportLeg",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "authorizedShipmentId",
+        "kind": "string",
+        "required": true,
+        "relation": "AuthorizedShipment"
+      },
+      {
+        "name": "carrier",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "origin",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "destination",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "departureAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "arrivalAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "TelemetryObservation": {
+    "name": "TelemetryObservation",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "containerId",
+        "kind": "string",
+        "required": true,
+        "relation": "Container"
+      },
+      {
+        "name": "observedAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "temperatureC",
+        "kind": "number",
+        "required": true,
+        "min": -273.15
+      },
+      {
+        "name": "location",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "source",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "ProcurementHandoff": {
+    "name": "ProcurementHandoff",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "authorizedShipmentId",
+        "kind": "string",
+        "required": true,
+        "relation": "AuthorizedShipment"
+      },
+      {
+        "name": "handedAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "sender",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "receiver",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "receipt",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "LogisticsIncident": {
+    "name": "LogisticsIncident",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "authorizedShipmentId",
+        "kind": "string",
+        "required": true,
+        "relation": "AuthorizedShipment"
+      },
+      {
+        "name": "occurredAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "issue",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "response",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "owner",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "OperationalTask": {
+    "name": "OperationalTask",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "owner",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "priority",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "startAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "dueAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "done",
+        "kind": "boolean",
+        "required": true
+      },
+      {
+        "name": "notes",
+        "kind": "string",
+        "required": false
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "RuleVersion": {
+    "name": "RuleVersion",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "jurisdiction",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "version",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "effectiveAt",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "expiresAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "sourceUrl",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "requirementText",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  },
+  "DocumentRequirement": {
+    "name": "DocumentRequirement",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "category",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "requiredBy",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "name": "sourceReference",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "evidenceReference",
+        "kind": "string",
+        "required": false
+      },
+      {
+        "name": "reviewNotes",
+        "kind": "string",
+        "required": false
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "procurementCaseId",
+        "kind": "string",
+        "required": true,
+        "relation": "ProcurementCase"
+      }
+    ],
+    "parent": {
+      "entity": "ProcurementCase",
+      "field": "procurementCaseId"
+    }
+  }
+}
